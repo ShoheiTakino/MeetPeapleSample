@@ -14,6 +14,13 @@
 		5D1009582A0918AA00C2C544 /* MeetPeapleSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009572A0918AA00C2C544 /* MeetPeapleSampleTests.swift */; };
 		5D1009622A0918AA00C2C544 /* MeetPeapleSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009612A0918AA00C2C544 /* MeetPeapleSampleUITests.swift */; };
 		5D1009642A0918AA00C2C544 /* MeetPeapleSampleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009632A0918AA00C2C544 /* MeetPeapleSampleUITestsLaunchTests.swift */; };
+		5D1009752A0919D500C2C544 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009742A0919D500C2C544 /* MainTabView.swift */; };
+		5D1009772A091A2700C2C544 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009762A091A2700C2C544 /* HomeView.swift */; };
+		5D10097B2A091A5800C2C544 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10097A2A091A5800C2C544 /* MyPageView.swift */; };
+		5D10097F2A091A8400C2C544 /* MessageTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10097E2A091A8400C2C544 /* MessageTabView.swift */; };
+		5D1009842A091AB100C2C544 /* InstantCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009832A091AB100C2C544 /* InstantCallView.swift */; };
+		5D1009872A091ACC00C2C544 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009862A091ACC00C2C544 /* BoardView.swift */; };
+		5D10098B2A0931A400C2C544 /* OtherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		5D10095D2A0918AA00C2C544 /* MeetPeapleSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetPeapleSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D1009612A0918AA00C2C544 /* MeetPeapleSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPeapleSampleUITests.swift; sourceTree = "<group>"; };
 		5D1009632A0918AA00C2C544 /* MeetPeapleSampleUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetPeapleSampleUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5D1009742A0919D500C2C544 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		5D1009762A091A2700C2C544 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5D10097A2A091A5800C2C544 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		5D10097E2A091A8400C2C544 /* MessageTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTabView.swift; sourceTree = "<group>"; };
+		5D1009832A091AB100C2C544 /* InstantCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantCallView.swift; sourceTree = "<group>"; };
+		5D1009862A091ACC00C2C544 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +108,7 @@
 		5D1009452A0918A800C2C544 /* MeetPeapleSample */ = {
 			isa = PBXGroup;
 			children = (
+				5D1009702A09198C00C2C544 /* Presentation */,
 				5D1009462A0918A800C2C544 /* MeetPeapleSampleApp.swift */,
 				5D1009482A0918A800C2C544 /* ContentView.swift */,
 				5D10094A2A0918AA00C2C544 /* Assets.xcassets */,
@@ -125,6 +140,124 @@
 				5D1009632A0918AA00C2C544 /* MeetPeapleSampleUITestsLaunchTests.swift */,
 			);
 			path = MeetPeapleSampleUITests;
+			sourceTree = "<group>";
+		};
+		5D1009702A09198C00C2C544 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009882A09318A00C2C544 /* OtherUserProfile */,
+				5D1009812A091A9700C2C544 /* Board */,
+				5D1009802A091A8A00C2C544 /* InstantCall */,
+				5D10097C2A091A6200C2C544 /* MessageTab */,
+				5D1009782A091A4200C2C544 /* MyPage */,
+				5D1009722A0919AA00C2C544 /* Home */,
+				5D1009712A0919A300C2C544 /* MainTab */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		5D1009712A0919A300C2C544 /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009742A0919D500C2C544 /* MainTabView.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
+		5D1009722A0919AA00C2C544 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009732A0919B300C2C544 /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5D1009732A0919B300C2C544 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009762A091A2700C2C544 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D1009782A091A4200C2C544 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009792A091A4E00C2C544 /* View */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		5D1009792A091A4E00C2C544 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D10097A2A091A5800C2C544 /* MyPageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D10097C2A091A6200C2C544 /* MessageTab */ = {
+			isa = PBXGroup;
+			children = (
+				5D10097D2A091A7300C2C544 /* View */,
+			);
+			path = MessageTab;
+			sourceTree = "<group>";
+		};
+		5D10097D2A091A7300C2C544 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D10097E2A091A8400C2C544 /* MessageTabView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D1009802A091A8A00C2C544 /* InstantCall */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009822A091AA100C2C544 /* View */,
+			);
+			path = InstantCall;
+			sourceTree = "<group>";
+		};
+		5D1009812A091A9700C2C544 /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009852A091AC000C2C544 /* View */,
+			);
+			path = Board;
+			sourceTree = "<group>";
+		};
+		5D1009822A091AA100C2C544 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009832A091AB100C2C544 /* InstantCallView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D1009852A091AC000C2C544 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009862A091ACC00C2C544 /* BoardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D1009882A09318A00C2C544 /* OtherUserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				5D1009892A09319900C2C544 /* View */,
+			);
+			path = OtherUserProfile;
+			sourceTree = "<group>";
+		};
+		5D1009892A09319900C2C544 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +390,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D10097F2A091A8400C2C544 /* MessageTabView.swift in Sources */,
 				5D1009492A0918A800C2C544 /* ContentView.swift in Sources */,
+				5D1009772A091A2700C2C544 /* HomeView.swift in Sources */,
+				5D10098B2A0931A400C2C544 /* OtherUserProfileView.swift in Sources */,
+				5D10097B2A091A5800C2C544 /* MyPageView.swift in Sources */,
 				5D1009472A0918A800C2C544 /* MeetPeapleSampleApp.swift in Sources */,
+				5D1009872A091ACC00C2C544 /* BoardView.swift in Sources */,
+				5D1009752A0919D500C2C544 /* MainTabView.swift in Sources */,
+				5D1009842A091AB100C2C544 /* InstantCallView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
