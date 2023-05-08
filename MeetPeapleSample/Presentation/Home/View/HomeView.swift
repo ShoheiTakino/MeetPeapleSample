@@ -27,38 +27,9 @@ struct HomeView: View {
         NavigationView {
             ScrollView(.vertical) {
                 LazyVGrid(columns: columns) {
-                    ForEach((0..<rows), id: \.self) { index in
+                    ForEach((1...rows), id: \.self) { index in
                         NavigationLink(destination: OtherUserProfileView()) {
-                            VStack {
-                                Image("user_image_\(index)")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 180, height: 180)
-                                    .cornerRadius(100)
-                                HStack {
-                                    Spacer()
-                                    Text("●")
-                                        .font(.system(size: 10))
-                                        .fontWeight(.heavy)
-                                        .foregroundColor(.green)
-                                    Text("24歳")
-                                        .font(.system(size: 15))
-                                    Text("滝野")
-                                        .font(.system(size: 15))
-                                    Spacer()
-                                    Text("東京都")
-                                        .font(.system(size: 15))
-                                    Spacer()
-                                }
-                                Spacer()
-                                Text("初めまして！仲良くなたら電話オッケーです！電話しましょう！")
-                                    .lineLimit(2)
-                                    .font(.system(size: 12))
-                                    .fontWeight(.medium)
-                                    .foregroundColor(.gray)
-                                Spacer()
-                            }
-                        }
+                            PartnerUSerView(imageNum: index)
                     }
                 }
             }
@@ -87,13 +58,38 @@ private struct PartnerUSerView: View {
     init(imageNum: Int) {
         self.imageNum = imageNum
     }
+    
     var body: some View {
         VStack {
-            Circle()
             Image("user_image_\(imageNum)")
                 .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 180, height: 180)
+                .cornerRadius(90)
+            HStack {
+                Spacer()
+                Text("●")
+                    .font(.system(size: 10))
+                    .fontWeight(.heavy)
+                    .foregroundColor(.green)
+                Text("24歳")
+                    .font(.system(size: 15))
+                Text("たっき〜")
+                    .font(.system(size: 15))
+                Spacer()
+                Text("東京都")
+                    .font(.system(size: 15))
+                Spacer()
+            }
+            Spacer()
+            Text("初めまして！仲良くなたら電話オッケーです！電話しましょう！")
+                .lineLimit(2)
+                .font(.system(size: 12))
+                .fontWeight(.medium)
+                .foregroundColor(.gray)
+            Spacer()
         }
-        Text("こんちは")
+    }
     }
 }
 struct HomeView_Previews: PreviewProvider {
