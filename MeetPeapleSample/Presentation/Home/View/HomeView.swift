@@ -58,8 +58,7 @@ struct HomeView: View {
                                     .foregroundColor(.pink)
                                 Text("On")
                                     .foregroundColor(.pink)
-                            },
-                                                trailing: NavigationLink(destination: NotificationView()) {
+                            },trailing: NavigationLink(destination: NotificationView()) {
                                 Image(systemName: "bell")
                             }
                             )}
@@ -99,6 +98,19 @@ private struct PartnerUSerView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 180, height: 180)
                 .cornerRadius(90)
+                .overlay(
+                    HStack {
+                        Image(systemName: "phone.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30, alignment: .center)
+                            .position(x: 20, y:20)
+                            .tint(.green)
+//                        Text("New")
+//                            .frame(width: 50, height: 30, alignment: .center)
+//                            .position(x: 70, y:20)
+//                            .tint(.red)
+                    }
+                )
             HStack {
                 Spacer()
                 Text("●")
