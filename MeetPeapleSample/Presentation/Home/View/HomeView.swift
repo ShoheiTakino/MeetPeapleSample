@@ -22,34 +22,67 @@ struct HomeView: View {
                                                              spacing: 0,
                                                              alignment: .center),
                                             count: 2)
+    private var storyColumns: [GridItem] = Array(repeating: .init(.flexible(),
+                                                                  spacing: 0,
+                                                                  alignment: .center),
+                                                 count: 1)
     let screenWidth = UIScreen.main.bounds.width
     var body: some View {
         NavigationView {
-            ScrollView(.vertical) {
-                LazyVGrid(columns: columns) {
-                    ForEach((1...rows), id: \.self) { index in
-                        NavigationLink(destination: OtherUserProfileView()) {
-                            PartnerUSerView(imageNum: index)
+            ScrollView(.vertical, showsIndicators: true) {
+                VStack {
+                    ScrollView (.horizontal) {
+                        LazyHGrid(rows: storyColumns) {
+                            ForEach((1...rows), id: \.self) { index in
+                                NavigationLink(destination: PartnerImageView(imageName: "user_image_\(index)")) {
+                                    StoryView(imageNum: index)
+                                        .overlay(
+                                            Circle()
+                                                .stroke(.pink, lineWidth: 1)
+                                        )
+                                }
+                            }
+                        }
+                    }
+                    .padding(10)
+                    .scrollIndicators(.hidden)
+                    LazyVGrid(columns: columns) {
+                        ForEach((1...rows), id: \.self) { index in
+                            NavigationLink(destination: OtherUserProfileView(imageNum: index)) {
+                                PartnerUSerView(imageNum: index)
+                            }
+                            .navigationTitle("1500")
+                            .navigationBarTitleDisplayMode(.inline)
+                            .navigationBarItems(leading: NavigationLink(destination: SearchView()) {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.pink)
+                                Text("On")
+                                    .foregroundColor(.pink)
+                            },
+                                                trailing: NavigationLink(destination: NotificationView()) {
+                                Image(systemName: "bell")
+                            }
+                            )}
                     }
                 }
             }
-            .navigationTitle("1500")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading: Button(action: {
-                print("左のボタンが押されました。")
-            }, label: {
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.pink)
-                Text("On")
-                    .foregroundColor(.pink)
-            }), trailing: HStack {
-                Button(action: {
-                    print("右のボタン１が押されました。")
-                }, label: {
-                    Image(systemName: "bell")
-                })
-            })
         }
+    }
+}
+
+private struct StoryView: View {
+    let imageNum: Int
+    
+    init(imageNum: Int) {
+        self.imageNum = imageNum
+    }
+    
+    var body: some View {
+        Image("user_image_\(imageNum)")
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 100, height: 100)
+            .cornerRadius(50)
     }
 }
 
@@ -90,8 +123,8 @@ private struct PartnerUSerView: View {
             Spacer()
         }
     }
-    }
 }
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()

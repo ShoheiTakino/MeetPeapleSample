@@ -8,13 +8,29 @@
 import SwiftUI
 
 struct OtherUserProfileView: View {
+    private let imageNum: Int
+    private let screen = UIScreen.main.bounds.width
+    
+    init(imageNum: Int) {
+        self.imageNum = imageNum
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ScrollView {
+                Image("user_image_\(imageNum)")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: screen, height: screen)
+                    .cornerRadius(20)
+                Spacer()
+            }
+        }
     }
 }
 
 struct OtherUserProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        OtherUserProfileView()
+        OtherUserProfileView(imageNum: 0)
     }
 }

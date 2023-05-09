@@ -21,6 +21,9 @@
 		5D1009842A091AB100C2C544 /* InstantCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009832A091AB100C2C544 /* InstantCallView.swift */; };
 		5D1009872A091ACC00C2C544 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1009862A091ACC00C2C544 /* BoardView.swift */; };
 		5D10098B2A0931A400C2C544 /* OtherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */; };
+		5DAEB6A62A09A7CA0089E96F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6A52A09A7CA0089E96F /* SearchView.swift */; };
+		5DAEB6AA2A0A7FB20089E96F /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6A92A0A7FB20089E96F /* NotificationView.swift */; };
+		5DAEB6AE2A0A846A0089E96F /* PartnerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6AD2A0A846A0089E96F /* PartnerImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 		5D1009832A091AB100C2C544 /* InstantCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantCallView.swift; sourceTree = "<group>"; };
 		5D1009862A091ACC00C2C544 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileView.swift; sourceTree = "<group>"; };
+		5DAEB6A52A09A7CA0089E96F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		5DAEB6A92A0A7FB20089E96F /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		5DAEB6AD2A0A846A0089E96F /* PartnerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +151,9 @@
 		5D1009702A09198C00C2C544 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5DAEB6AB2A0A843D0089E96F /* PartnerImage */,
+				5DAEB6A72A0A7F960089E96F /* Notification */,
+				5DAEB6A32A09A7AE0089E96F /* Search */,
 				5D1009882A09318A00C2C544 /* OtherUserProfile */,
 				5D1009812A091A9700C2C544 /* Board */,
 				5D1009802A091A8A00C2C544 /* InstantCall */,
@@ -256,6 +265,54 @@
 			isa = PBXGroup;
 			children = (
 				5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6A32A09A7AE0089E96F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6A42A09A7BC0089E96F /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		5DAEB6A42A09A7BC0089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6A52A09A7CA0089E96F /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6A72A0A7F960089E96F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6A82A0A7FA60089E96F /* View */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		5DAEB6A82A0A7FA60089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6A92A0A7FB20089E96F /* NotificationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6AB2A0A843D0089E96F /* PartnerImage */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6AC2A0A84600089E96F /* View */,
+			);
+			path = PartnerImage;
+			sourceTree = "<group>";
+		};
+		5DAEB6AC2A0A84600089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6AD2A0A846A0089E96F /* PartnerImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -390,8 +447,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DAEB6A62A09A7CA0089E96F /* SearchView.swift in Sources */,
 				5D10097F2A091A8400C2C544 /* MessageTabView.swift in Sources */,
 				5D1009492A0918A800C2C544 /* ContentView.swift in Sources */,
+				5DAEB6AE2A0A846A0089E96F /* PartnerImageView.swift in Sources */,
+				5DAEB6AA2A0A7FB20089E96F /* NotificationView.swift in Sources */,
 				5D1009772A091A2700C2C544 /* HomeView.swift in Sources */,
 				5D10098B2A0931A400C2C544 /* OtherUserProfileView.swift in Sources */,
 				5D10097B2A091A5800C2C544 /* MyPageView.swift in Sources */,
