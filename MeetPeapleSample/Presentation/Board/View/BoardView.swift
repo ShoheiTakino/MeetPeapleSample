@@ -9,12 +9,40 @@ import SwiftUI
 
 struct BoardView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List {
+                ForEach(1..<11) { index in
+                    HStack {
+                        NavigationLink(destination: OtherUserProfileView(imageNum: index)) {
+                            Image("user_image_\(index)")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 70, height: 70)
+                                .cornerRadius(35)
+                        }
+                        VStack {
+                            Text("たっき〜")
+                                .frame(alignment: .leading)
+                            Text("音声通話しましょう！")
+                                .frame(alignment: .leading)
+                        }
+                        
+                    }
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle("掲示板(すべて)")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: NavigationLink(destination: NotificationView()) {
+                Image(systemName: "bell")
+                    .tint(.gray)
+            })
+        }
     }
 }
 
 struct BoardView_Previews: PreviewProvider {
     static var previews: some View {
-        BoardView()
+        MainTabView()
     }
 }
