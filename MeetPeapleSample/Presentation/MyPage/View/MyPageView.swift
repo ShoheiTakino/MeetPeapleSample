@@ -43,22 +43,23 @@ enum MyPageItems: CaseIterable {
         }
     }
     
-//    var myPageItemsView: View {
-//        switch self {
-//        case .footprint: return FootprintView()
-//        case .setting: return SettingView()
-//        case .favolite: return FavoliteView()
-//        case .good: return GoodView()
-//        case .dailyBounace: return DailyBounaceView()
-//        case .gallary: return GallaryView()
-//        case .callHistory: return CallHistoryView()
-//        case .ranking: return RankingView()
-//        }
-//    }
+    //    var myPageItemsView: View {
+    //        switch self {
+    //        case .footprint: return FootprintView()
+    //        case .setting: return SettingView()
+    //        case .favolite: return FavoliteView()
+    //        case .good: return GoodView()
+    //        case .dailyBounace: return DailyBounaceView()
+    //        case .gallary: return GallaryView()
+    //        case .callHistory: return CallHistoryView()
+    //        case .ranking: return RankingView()
+    //        }
+    //    }
 }
 
 struct MyPageView: View {
-    
+    @State private var isVoiceWaiteing = false
+    @State private var isVideoWaiteing = false
     private var columns: [GridItem] = Array(repeating: .init(.flexible(),
                                                              spacing: 0,
                                                              alignment: .center),
@@ -71,13 +72,18 @@ struct MyPageView: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
                     .cornerRadius(50)
+                    .padding()
                 VStack {
                     Text("タッキー")
                         .foregroundColor(.black)
                         .fontWeight(.bold)
-                    Text("プロフィール確認")
-                        .foregroundColor(.cyan)
-                        .fontWeight(.semibold)
+                    Button {
+                        
+                    } label: {
+                        Text("プロフィール確認")
+                            .foregroundColor(.cyan)
+                            .fontWeight(.semibold)
+                    }
                 }
                 Spacer()
             }
@@ -87,29 +93,29 @@ struct MyPageView: View {
                     
                 } label: {
                     Text("ポイント追加")
+                        .frame(width: 100, height: 50)
                 }
             }
             HStack {
                 Text("着信の許可設定")
                     .fontWeight(.light)
-                    .font(.system(size: 18))
+                    .font(.system(size: 15))
                 Text("(offにすると着信拒否になります)")
                     .fontWeight(.light)
-                    .font(.system(size: 13))
+                    .font(.system(size: 12))
             }
             HStack {
-                Text("音声通話")
-                Text("音声通話")
-                Text("ビデオ通話")
-                Text("ビデオ通話")
+                Toggle("音声通話", isOn: $isVoiceWaiteing)
+                    .padding()
+                Toggle("ビデオ通話", isOn: $isVideoWaiteing)
+                    .padding()
             }
             LazyHGrid(rows: columns) {
                 ForEach((1..<MyPageItems.allCases.count), id: \.self) { index in
-                    NavigationLink(destination: SettingView()) {
-                        VStack {
+                    VStack {
+                        NavigationLink(destination: SettingView()) {
                             Image(systemName: MyPageItems.allCases[index].systemName)
-                                .frame(width: 100, height: 100)
-//                            Text(MyPageItems.allCases[index].title)
+                                .frame(width: 100, height: 200)
                         }
                     }
                 }
