@@ -24,6 +24,15 @@
 		5DAEB6A62A09A7CA0089E96F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6A52A09A7CA0089E96F /* SearchView.swift */; };
 		5DAEB6AA2A0A7FB20089E96F /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6A92A0A7FB20089E96F /* NotificationView.swift */; };
 		5DAEB6AE2A0A846A0089E96F /* PartnerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6AD2A0A846A0089E96F /* PartnerImageView.swift */; };
+		5DAEB6B22A0BBAD40089E96F /* DirectMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6B12A0BBAD40089E96F /* DirectMessageView.swift */; };
+		5DAEB6C42A0D01CE0089E96F /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6C32A0D01CE0089E96F /* RankingView.swift */; };
+		5DAEB6C62A0D01E50089E96F /* FootprintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6C52A0D01E50089E96F /* FootprintView.swift */; };
+		5DAEB6C82A0D02000089E96F /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6C72A0D02000089E96F /* SettingView.swift */; };
+		5DAEB6CA2A0D020A0089E96F /* GoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6C92A0D020A0089E96F /* GoodView.swift */; };
+		5DAEB6CC2A0D02140089E96F /* FavoliteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6CB2A0D02140089E96F /* FavoliteView.swift */; };
+		5DAEB6CE2A0D021F0089E96F /* DailyBounaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6CD2A0D021F0089E96F /* DailyBounaceView.swift */; };
+		5DAEB6D02A0D02290089E96F /* GallaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6CF2A0D02290089E96F /* GallaryView.swift */; };
+		5DAEB6D22A0D02360089E96F /* CallHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6D12A0D02360089E96F /* CallHistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +73,15 @@
 		5DAEB6A52A09A7CA0089E96F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5DAEB6A92A0A7FB20089E96F /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		5DAEB6AD2A0A846A0089E96F /* PartnerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerImageView.swift; sourceTree = "<group>"; };
+		5DAEB6B12A0BBAD40089E96F /* DirectMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessageView.swift; sourceTree = "<group>"; };
+		5DAEB6C32A0D01CE0089E96F /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
+		5DAEB6C52A0D01E50089E96F /* FootprintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FootprintView.swift; sourceTree = "<group>"; };
+		5DAEB6C72A0D02000089E96F /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		5DAEB6C92A0D020A0089E96F /* GoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodView.swift; sourceTree = "<group>"; };
+		5DAEB6CB2A0D02140089E96F /* FavoliteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoliteView.swift; sourceTree = "<group>"; };
+		5DAEB6CD2A0D021F0089E96F /* DailyBounaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyBounaceView.swift; sourceTree = "<group>"; };
+		5DAEB6CF2A0D02290089E96F /* GallaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GallaryView.swift; sourceTree = "<group>"; };
+		5DAEB6D12A0D02360089E96F /* CallHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +169,15 @@
 		5D1009702A09198C00C2C544 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5DAEB6BA2A0D018F0089E96F /* CallHistory */,
+				5DAEB6B92A0D01860089E96F /* Gallary */,
+				5DAEB6B82A0D017E0089E96F /* DailyBounace */,
+				5DAEB6B72A0D01760089E96F /* Favolite */,
+				5DAEB6B62A0D016D0089E96F /* Good */,
+				5DAEB6B52A0D01650089E96F /* Setting */,
+				5DAEB6B42A0D015D0089E96F /* Footprint */,
+				5DAEB6B32A0D01530089E96F /* Ranking */,
+				5DAEB6AF2A0BBABA0089E96F /* DirectMessage */,
 				5DAEB6AB2A0A843D0089E96F /* PartnerImage */,
 				5DAEB6A72A0A7F960089E96F /* Notification */,
 				5DAEB6A32A09A7AE0089E96F /* Search */,
@@ -317,6 +344,150 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		5DAEB6AF2A0BBABA0089E96F /* DirectMessage */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6B02A0BBAC50089E96F /* View */,
+			);
+			path = DirectMessage;
+			sourceTree = "<group>";
+		};
+		5DAEB6B02A0BBAC50089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6B12A0BBAD40089E96F /* DirectMessageView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6B32A0D01530089E96F /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6C22A0D01C20089E96F /* View */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		5DAEB6B42A0D015D0089E96F /* Footprint */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6C12A0D01BE0089E96F /* View */,
+			);
+			path = Footprint;
+			sourceTree = "<group>";
+		};
+		5DAEB6B52A0D01650089E96F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6C02A0D01BA0089E96F /* View */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		5DAEB6B62A0D016D0089E96F /* Good */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6BF2A0D01B60089E96F /* View */,
+			);
+			path = Good;
+			sourceTree = "<group>";
+		};
+		5DAEB6B72A0D01760089E96F /* Favolite */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6BE2A0D01B20089E96F /* View */,
+			);
+			path = Favolite;
+			sourceTree = "<group>";
+		};
+		5DAEB6B82A0D017E0089E96F /* DailyBounace */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6BD2A0D01AE0089E96F /* View */,
+			);
+			path = DailyBounace;
+			sourceTree = "<group>";
+		};
+		5DAEB6B92A0D01860089E96F /* Gallary */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6BC2A0D01A90089E96F /* View */,
+			);
+			path = Gallary;
+			sourceTree = "<group>";
+		};
+		5DAEB6BA2A0D018F0089E96F /* CallHistory */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6BB2A0D01A00089E96F /* View */,
+			);
+			path = CallHistory;
+			sourceTree = "<group>";
+		};
+		5DAEB6BB2A0D01A00089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6D12A0D02360089E96F /* CallHistoryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6BC2A0D01A90089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6CF2A0D02290089E96F /* GallaryView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6BD2A0D01AE0089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6CD2A0D021F0089E96F /* DailyBounaceView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6BE2A0D01B20089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6CB2A0D02140089E96F /* FavoliteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6BF2A0D01B60089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6C92A0D020A0089E96F /* GoodView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6C02A0D01BA0089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6C72A0D02000089E96F /* SettingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6C12A0D01BE0089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6C52A0D01E50089E96F /* FootprintView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5DAEB6C22A0D01C20089E96F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5DAEB6C32A0D01CE0089E96F /* RankingView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -449,10 +620,19 @@
 			files = (
 				5DAEB6A62A09A7CA0089E96F /* SearchView.swift in Sources */,
 				5D10097F2A091A8400C2C544 /* MessageTabView.swift in Sources */,
+				5DAEB6C62A0D01E50089E96F /* FootprintView.swift in Sources */,
 				5D1009492A0918A800C2C544 /* ContentView.swift in Sources */,
 				5DAEB6AE2A0A846A0089E96F /* PartnerImageView.swift in Sources */,
+				5DAEB6CE2A0D021F0089E96F /* DailyBounaceView.swift in Sources */,
+				5DAEB6C82A0D02000089E96F /* SettingView.swift in Sources */,
+				5DAEB6CC2A0D02140089E96F /* FavoliteView.swift in Sources */,
+				5DAEB6CA2A0D020A0089E96F /* GoodView.swift in Sources */,
 				5DAEB6AA2A0A7FB20089E96F /* NotificationView.swift in Sources */,
 				5D1009772A091A2700C2C544 /* HomeView.swift in Sources */,
+				5DAEB6D22A0D02360089E96F /* CallHistoryView.swift in Sources */,
+				5DAEB6D02A0D02290089E96F /* GallaryView.swift in Sources */,
+				5DAEB6B22A0BBAD40089E96F /* DirectMessageView.swift in Sources */,
+				5DAEB6C42A0D01CE0089E96F /* RankingView.swift in Sources */,
 				5D10098B2A0931A400C2C544 /* OtherUserProfileView.swift in Sources */,
 				5D10097B2A091A5800C2C544 /* MyPageView.swift in Sources */,
 				5D1009472A0918A800C2C544 /* MeetPeapleSampleApp.swift in Sources */,
