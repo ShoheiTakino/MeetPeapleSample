@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct HomeEntity {
+struct MeetPeopleEntity {
     let image: String
     let region: String
     let name: String
     let age: Int
-    let onlineStatus: String
+    let isVoiceCallStatas: Bool
     let selfIntroduction: String
 }
 
 struct HomeView: View {
-    let rows = 10
+    private let rows = 10
     private var columns: [GridItem] = Array(repeating: .init(.flexible(),
                                                              spacing: 0,
                                                              alignment: .center),
@@ -27,15 +27,20 @@ struct HomeView: View {
                                                                   alignment: .center),
                                                  count: 1)
     let screenWidth = UIScreen.main.bounds.width
+    @StateObject private var viewModel = HomeViewModel()
+
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: true) {
                 VStack {
+//                    Image(systemName: "person")
+//                        .background(Color.black)
+//                        .frame(width: .infinity, height: 50)
                     ScrollView (.horizontal) {
                         LazyHGrid(rows: storyColumns) {
-                            ForEach((1...rows), id: \.self) { index in
-                                NavigationLink(destination: PartnerImageView(imageName: "user_image_\(index)")) {
-                                    StoryView(imageNum: index)
+                            ForEach((0..<viewModel.meetPeopleEntityList.count), id: \.self) { index in
+                                NavigationLink(destination: PartnerImageView(imageName: "user_image_\(viewModel.meetPeopleEntityList[index].image)")) {
+                                    StoryView(meetPeopleEntity: viewModel.meetPeopleEntityList[index])
                                         .overlay(
                                             Circle()
                                                 .stroke(.pink, lineWidth: 1)
@@ -47,11 +52,11 @@ struct HomeView: View {
                     .padding(10)
                     .scrollIndicators(.hidden)
                     LazyVGrid(columns: columns) {
-                        ForEach((1...rows), id: \.self) { index in
-                            NavigationLink(destination: OtherUserProfileView(imageNum: index)) {
-                                PartnerUSerView(imageNum: index)
+                        ForEach(0..<viewModel.meetPeopleEntityList.count, id: \.self) { index in
+                            NavigationLink(destination: OtherUserProfileView(meetPeopleEntity: viewModel.meetPeopleEntityList[index])) {
+                                PartnerUSerView(meetPeopleEntity: viewModel.meetPeopleEntityList[index])
                             }
-                            .navigationTitle("1500")
+                            .navigationTitle(Text("💰 1000"))
                             .navigationBarTitleDisplayMode(.inline)
                             .navigationBarItems(leading: NavigationLink(destination: SearchView()) {
                                 Image(systemName: "magnifyingglass")
@@ -65,19 +70,29 @@ struct HomeView: View {
                     }
                 }
             }
+            .refreshable {
+                viewModel.pulledToRefresh()
+            }
         }
     }
 }
 
+//struct ReportAndBl0ckAlertView<Content>: View where Content: View {
+//    let action: () -> Void
+//    var body: some View {
+//        return Alert(title: Text(""), message: Text("dd"), dismissButton: .default(Text("fff")))
+//    }
+//}
+
 private struct StoryView: View {
-    let imageNum: Int
+    let meetPeopleEntity: MeetPeopleEntity
     
-    init(imageNum: Int) {
-        self.imageNum = imageNum
+    init(meetPeopleEntity: MeetPeopleEntity) {
+        self.meetPeopleEntity = meetPeopleEntity
     }
     
     var body: some View {
-        Image("user_image_\(imageNum)")
+        Image("user_image_\(meetPeopleEntity.image)")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 100, height: 100)
@@ -86,14 +101,15 @@ private struct StoryView: View {
 }
 
 private struct PartnerUSerView: View {
-    let imageNum: Int
-    init(imageNum: Int) {
-        self.imageNum = imageNum
+
+    let meetPeopleEntity: MeetPeopleEntity
+    init(meetPeopleEntity: MeetPeopleEntity) {
+        self.meetPeopleEntity = meetPeopleEntity
     }
     
     var body: some View {
         VStack {
-            Image("user_image_\(imageNum)")
+            Image("user_image_\(meetPeopleEntity.image)")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 180, height: 180)
@@ -111,28 +127,34 @@ private struct PartnerUSerView: View {
 //                            .tint(.red)
                     }
                 )
-            HStack {
-                Spacer()
-                Text("●")
-                    .font(.system(size: 10))
-                    .fontWeight(.heavy)
-                    .foregroundColor(.green)
-                Text("24歳")
-                    .font(.system(size: 15))
-                Text("たっき〜")
-                    .font(.system(size: 15))
-                Spacer()
-                Text("東京都")
-                    .font(.system(size: 15))
-                Spacer()
+            VStack {
+                HStack {
+                    if meetPeopleEntity.isVoiceCallStatas  {
+                        Text("●")
+                            .font(.system(size: 10))
+                            .fontWeight(.heavy)
+                            .foregroundColor(.green)
+                            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 0))
+                    }
+                    Text("\(meetPeopleEntity.age)歳")
+                        .font(.system(size: 15))
+                        .padding(EdgeInsets(top: 0, leading: meetPeopleEntity.isVoiceCallStatas ? 0 : 5, bottom: 0, trailing: 0))
+                    Text(meetPeopleEntity.name)
+                        .font(.system(size: 15))
+                    Spacer()
+                    Text(meetPeopleEntity.region)
+                        .font(.system(size: 15))
+                        .lineLimit(1)
+                    Spacer()
+                }
+                Text(meetPeopleEntity.selfIntroduction)
+                    .lineLimit(2)
+                    .font(.system(size: 12))
+                    .fontWeight(.medium)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.leading)
             }
-            Spacer()
-            Text("初めまして！仲良くなたら電話オッケーです！電話しましょう！")
-                .lineLimit(2)
-                .font(.system(size: 12))
-                .fontWeight(.medium)
-                .foregroundColor(.gray)
-            Spacer()
+            .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }
     }
 }

@@ -13,13 +13,13 @@ struct BoardView: View {
             List {
                 ForEach(1..<11) { index in
                     HStack {
-                        NavigationLink(destination: OtherUserProfileView(imageNum: index)) {
-                            Image("user_image_\(index)")
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 70, height: 70)
-                                .cornerRadius(35)
-                        }
+//                        NavigationLink(destination: OtherUserProfileView(meetPeopleEntity: index)) {
+//                            Image("user_image_\(index)")
+//                                .resizable()
+//                                .aspectRatio(contentMode: .fill)
+//                                .frame(width: 70, height: 70)
+//                                .cornerRadius(35)
+//                        }
                         VStack {
                             Text("たっき〜")
                                 .frame(alignment: .leading)

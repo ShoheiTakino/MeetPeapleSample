@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct OtherUserProfileView: View {
-    private let imageNum: Int
+    private let meetPeopleEntity: MeetPeopleEntity
     private let screen = UIScreen.main.bounds.width
     
-    init(imageNum: Int) {
-        self.imageNum = imageNum
+    init(meetPeopleEntity: MeetPeopleEntity) {
+        self.meetPeopleEntity = meetPeopleEntity
     }
     
     var body: some View {
         VStack {
             ScrollView {
-                Image("user_image_\(imageNum)")
+                Image("user_image_\(meetPeopleEntity.image)")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: screen, height: screen)
@@ -29,8 +29,8 @@ struct OtherUserProfileView: View {
     }
 }
 
-struct OtherUserProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        OtherUserProfileView(imageNum: 0)
-    }
-}
+//struct OtherUserProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        OtherUserProfileView(imageNum: 0)
+//    }
+//}
