@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shimmer
 
 struct MeetPeopleEntity {
     let image: String
@@ -54,7 +55,7 @@ struct HomeView: View {
                     LazyVGrid(columns: columns) {
                         ForEach(0..<viewModel.meetPeopleEntityList.count, id: \.self) { index in
                             NavigationLink(destination: OtherUserProfileView(meetPeopleEntity: viewModel.meetPeopleEntityList[index])) {
-                                PartnerUSerView(meetPeopleEntity: viewModel.meetPeopleEntityList[index])
+                                PartnerUSerView(meetPeopleEntity: viewModel.meetPeopleEntityList[index], isLoading: $viewModel.isLoading)
                             }
                             .navigationTitle(Text("💰 1000"))
                             .navigationBarTitleDisplayMode(.inline)
@@ -103,9 +104,7 @@ private struct StoryView: View {
 private struct PartnerUSerView: View {
 
     let meetPeopleEntity: MeetPeopleEntity
-    init(meetPeopleEntity: MeetPeopleEntity) {
-        self.meetPeopleEntity = meetPeopleEntity
-    }
+    @Binding var isLoading: Bool
     
     var body: some View {
         VStack {
@@ -127,6 +126,8 @@ private struct PartnerUSerView: View {
 //                            .tint(.red)
                     }
                 )
+//                .redacted(reason: isLoading ? [] : .placeholder)
+//                .shimmering(active: !isLoading, animation: .easeInOut)
             VStack {
                 HStack {
                     if meetPeopleEntity.isVoiceCallStatas  {
@@ -156,6 +157,8 @@ private struct PartnerUSerView: View {
             }
             .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }
+        .redacted(reason: isLoading ? [] : .placeholder)
+        .shimmering(active: !isLoading, animation: !isLoading ? .easeIn(duration: 1.0) : .default)
     }
 }
 

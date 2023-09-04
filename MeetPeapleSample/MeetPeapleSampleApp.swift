@@ -11,7 +11,7 @@ import SwiftUI
 struct MeetPeapleSampleApp: App {
     var body: some Scene {
         WindowGroup {
-            Tab()
+            MainTabView()
         }
     }
 }

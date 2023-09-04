@@ -11,6 +11,7 @@ final class HomeViewModel: ObservableObject {
 
     @Published var meetPeopleEntityList: [MeetPeopleEntity] = []
     @Published var isLoadingMore = false
+    @Published var isLoading = false
 
     init() {
         generateRandomMeetPeopleEntities()
@@ -33,17 +34,14 @@ final class HomeViewModel: ObservableObject {
     }
 
     func pulledToRefresh() {
+        isLoading = false
         meetPeopleEntityList = []
         generateRandomMeetPeopleEntities()
     }
 
     func loadMoreData() {
-        guard !isLoadingMore else {
-            return
-        }
-
+        guard !isLoadingMore else { return }
         isLoadingMore = true
-
         generateRandomMeetPeopleEntities()
     }
 }
@@ -53,11 +51,14 @@ final class HomeViewModel: ObservableObject {
 private extension HomeViewModel {
 
     func generateRandomMeetPeopleEntities() {
-        var entities: [MeetPeopleEntity] = []
-        for _ in 0..<Int.random(in: 1...50) {
-            let randomMeetPerson = generateRandomMeetPeopleEntity()
-            entities.append(randomMeetPerson)
+            var entities: [MeetPeopleEntity] = []
+            for _ in 0..<Int.random(in: 1...50) {
+                let randomMeetPerson = generateRandomMeetPeopleEntity()
+                entities.append(randomMeetPerson)
+            }
+            meetPeopleEntityList += entities
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+            isLoading = true
         }
-        meetPeopleEntityList += entities
     }
 }
