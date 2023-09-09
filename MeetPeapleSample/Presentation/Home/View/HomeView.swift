@@ -158,7 +158,7 @@ private struct PartnerUSerView: View {
             .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
         }
         .redacted(reason: isLoading ? [] : .placeholder)
-        .shimmering(active: !isLoading, animation: !isLoading ? .easeIn(duration: 1.0) : .default)
+        .shimmering(active: !isLoading, animation: !isLoading ? .easeOut(duration: 1.0) : .default)
     }
 }
 
