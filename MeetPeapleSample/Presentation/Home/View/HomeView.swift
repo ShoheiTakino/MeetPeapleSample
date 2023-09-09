@@ -8,26 +8,6 @@
 import SwiftUI
 import Shimmer
 
-struct SecureImageView: View {
-    @State private var isScreenshotTaken = false
-
-    var body: some View {
-        ZStack {
-            if isScreenshotTaken {
-                Color.black
-            } else {
-                Image("user_image_1") // 画像名を適切に設定
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.userDidTakeScreenshotNotification)) { _ in
-            // スクリーンショットが撮られたときに実行される処理
-            isScreenshotTaken = true
-        }
-    }
-}
-
 struct MeetPeopleEntity {
     let image: String
     let region: String
