@@ -150,6 +150,7 @@ struct MyPageView: View {
         .fullScreenCover(isPresented: $isProfileDetailVisible, content: {
             ProfileIconImage(isVisible: $isProfileDetailVisible)
                 .transition(.move(edge: .top))
+                .backgroundClearSheet()
          })
     }
 }
@@ -160,12 +161,15 @@ struct ProfileIconImage: View {
 
     var body: some View {
         ZStack {
+            Color.white.opacity(0.2) // 背景の透明度を設定
+                 .ignoresSafeArea()
             Image("user_image_1")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 150, height: 150)
                 .clipShape(Circle())
         }
+        .background(.clear)
         .onTapGesture {
             isVisible = false
         }
@@ -175,5 +179,25 @@ struct ProfileIconImage: View {
 struct MyPageView_Previews: PreviewProvider {
     static var previews: some View {
         MyPageView()
+    }
+}
+
+struct BackgroundClearView: UIViewRepresentable {
+
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView()
+        Task {
+            view.superview?.superview?.backgroundColor = .white.withAlphaComponent(0.5)
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
+}
+
+extension View {
+
+    func backgroundClearSheet() -> some View {
+        background(BackgroundClearView())
     }
 }
