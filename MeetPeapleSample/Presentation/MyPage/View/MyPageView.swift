@@ -60,13 +60,13 @@ enum MyPageItems: CaseIterable {
 struct ProfileBackgroundView: View {
     var body: some View {
         // 線形グラデーション（青→黒）を生成
-        LinearGradient(gradient: Gradient(colors: [.pink, .red]), startPoint: .leading, endPoint: .trailing)
-            .ignoresSafeArea()      // フレームサイズをセーフエリア外まで広げる
+        LinearGradient(gradient: Gradient(colors: [.orange, .pink]), startPoint: .leading, endPoint: .trailing)
     }
 }
 
 
 struct MyPageView: View {
+    @State private var isProfileDetailVisible = false
     @State private var isVoiceWaiteing = false
     @State private var isVideoWaiteing = false
     private var columns: [GridItem] = Array(repeating: .init(.flexible(),
@@ -76,21 +76,27 @@ struct MyPageView: View {
     var body: some View {
         VStack {
             HStack {
-                ZStack {
-                    ProfileBackgroundView()
-                        .background(.pink.opacity(0.9))
-                        .frame(width: 108, height: 108)
-                        .cornerRadius(54)
-                    Image("user_image_1")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 100, height: 100)
-                        .clipShape(Circle())
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 50)
-                                .stroke(Color.white, lineWidth: 3)
-                        )
-                }
+                    Button {
+                        withAnimation {
+                            isProfileDetailVisible.toggle()
+                        }
+                    } label: {
+                        ZStack {
+                        ProfileBackgroundView()
+                            .background(.pink.opacity(0.9))
+                            .frame(width: 108, height: 108)
+                            .cornerRadius(54)
+                        Image("user_image_1")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 100, height: 100)
+                            .clipShape(Circle())
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 50)
+                                    .stroke(Color.white, lineWidth: 3)
+                            )
+                        }
+                    }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                 VStack {
                     Text("タッキー")
@@ -140,6 +146,28 @@ struct MyPageView: View {
                 }
             }
             Spacer()
+        }
+        .fullScreenCover(isPresented: $isProfileDetailVisible, content: {
+            ProfileIconImage(isVisible: $isProfileDetailVisible)
+                .transition(.move(edge: .top))
+         })
+    }
+}
+
+struct ProfileIconImage: View {
+
+    @Binding var isVisible: Bool
+
+    var body: some View {
+        ZStack {
+            Image("user_image_1")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 150, height: 150)
+                .clipShape(Circle())
+        }
+        .onTapGesture {
+            isVisible = false
         }
     }
 }
