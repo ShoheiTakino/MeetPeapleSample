@@ -18,7 +18,7 @@ final class HomeViewModel: ObservableObject {
     }
 
     private func generateRandomMeetPeopleEntity() -> MeetPeopleEntity {
-        let randomImage = "\(Int.random(in: 1...10))"
+        let randomImage = "user_image_\(Int.random(in: 1...10))"
         let randomRegion = ["Tokyo", "New York", "London", "Paris", "Sydney"].randomElement() ?? ""
         let randomName = ["Alice", "Bob", "Charlie", "David", "Ella"].randomElement() ?? ""
         let randomAge = Int.random(in: 18...60)

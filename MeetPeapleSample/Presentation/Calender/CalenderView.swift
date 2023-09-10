@@ -68,7 +68,28 @@ struct CalenderView: View {
     var body: some View {
         GeometryReader { geometory in
             VStack {
-                Text("カレンダー")
+                HStack {
+                    Button {
+
+                    } label: {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                            Text("昨年")
+                        }
+                    }
+                    Spacer()
+                    Text("カレンダー" + "2023年")
+                    Spacer()
+                    Button {
+
+                    } label: {
+                        HStack {
+                            Text("翌年")
+                            Image(systemName: "chevron.right")
+                        }
+                    }
+                }
+                .padding(EdgeInsets(top: 0, leading: 5, bottom: 0, trailing: 5))
                 ScrollViewReader { monthReader in
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {

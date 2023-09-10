@@ -40,7 +40,7 @@ struct HomeView: View {
                     ScrollView (.horizontal) {
                         LazyHGrid(rows: storyColumns) {
                             ForEach((0..<viewModel.meetPeopleEntityList.count), id: \.self) { index in
-                                NavigationLink(destination: PartnerImageView(imageName: "user_image_\(viewModel.meetPeopleEntityList[index].image)")) {
+                                NavigationLink(destination: PartnerImageView(imageName: viewModel.meetPeopleEntityList[index].image)) {
                                     StoryView(meetPeopleEntity: viewModel.meetPeopleEntityList[index])
                                         .overlay(
                                             Circle()
@@ -54,7 +54,8 @@ struct HomeView: View {
                     .scrollIndicators(.hidden)
                     LazyVGrid(columns: columns) {
                         ForEach(0..<viewModel.meetPeopleEntityList.count, id: \.self) { index in
-                            NavigationLink(destination: OtherUserProfileView(meetPeopleEntity: viewModel.meetPeopleEntityList[index])) {
+                            NavigationLink(destination: OtherUserProfileView(meetPeopleEntityList: viewModel.meetPeopleEntityList,
+                                                                             selctedIndex: index)) {
                                 PartnerUSerView(meetPeopleEntity: viewModel.meetPeopleEntityList[index], isLoading: $viewModel.isLoading)
                             }
                             .navigationTitle(Text("💰 1000"))
@@ -93,7 +94,7 @@ private struct StoryView: View {
     }
     
     var body: some View {
-        Image("user_image_\(meetPeopleEntity.image)")
+        Image(meetPeopleEntity.image)
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 100, height: 100)
@@ -108,7 +109,7 @@ private struct PartnerUSerView: View {
     
     var body: some View {
         VStack {
-            Image("user_image_\(meetPeopleEntity.image)")
+            Image(meetPeopleEntity.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 180, height: 180)
