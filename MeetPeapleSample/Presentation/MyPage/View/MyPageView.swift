@@ -161,15 +161,34 @@ struct ProfileIconImage: View {
 
     var body: some View {
         ZStack {
-            Color.white.opacity(0.2) // 背景の透明度を設定
-                 .ignoresSafeArea()
+            ProfileEditBackgroundView().ignoresSafeArea()
+            ProfileBackgroundView()
+                .background(.pink.opacity(0.9))
+                .frame(width: 108, height: 108)
+                .cornerRadius(54)
             Image("user_image_1")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 150, height: 150)
+                .frame(width: 200, height: 200)
                 .clipShape(Circle())
+                .overlay {
+                    RoundedRectangle(cornerRadius: 100)
+                        .stroke(Color.clear, lineWidth: 10)
+                }
+            HStack {
+                ZStack {
+                    Image(systemName: "p.circle.fill")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.yellow)
+                }
+                .padding(EdgeInsets(top: 160, leading: 0, bottom: 0, trailing: 60))
+                Image(systemName: "plus.circle.fill")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                    .padding(EdgeInsets(top: 160, leading: 60, bottom: 0, trailing: 0))
+            }
         }
-        .background(.clear)
         .onTapGesture {
             isVisible = false
         }
@@ -179,6 +198,13 @@ struct ProfileIconImage: View {
 struct MyPageView_Previews: PreviewProvider {
     static var previews: some View {
         MyPageView()
+    }
+}
+
+struct ProfileEditBackgroundView: View {
+    var body: some View {
+        // 線形グラデーション（青→黒）を生成
+        LinearGradient(gradient: Gradient(colors: [.white.opacity(0.7), .green.opacity(0.1)]), startPoint: .leading, endPoint: .trailing)
     }
 }
 
