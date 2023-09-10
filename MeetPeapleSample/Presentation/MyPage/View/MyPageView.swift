@@ -57,6 +57,15 @@ enum MyPageItems: CaseIterable {
     //    }
 }
 
+struct ProfileBackgroundView: View {
+    var body: some View {
+        // 線形グラデーション（青→黒）を生成
+        LinearGradient(gradient: Gradient(colors: [.pink, .red]), startPoint: .leading, endPoint: .trailing)
+            .ignoresSafeArea()      // フレームサイズをセーフエリア外まで広げる
+    }
+}
+
+
 struct MyPageView: View {
     @State private var isVoiceWaiteing = false
     @State private var isVideoWaiteing = false
@@ -67,12 +76,22 @@ struct MyPageView: View {
     var body: some View {
         VStack {
             HStack {
-                Image("user_image_1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .cornerRadius(50)
-                    .padding()
+                ZStack {
+                    ProfileBackgroundView()
+                        .background(.pink.opacity(0.9))
+                        .frame(width: 108, height: 108)
+                        .cornerRadius(54)
+                    Image("user_image_1")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 50)
+                                .stroke(Color.white, lineWidth: 3)
+                        )
+                }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                 VStack {
                     Text("タッキー")
                         .foregroundColor(.black)
