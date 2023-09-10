@@ -114,26 +114,7 @@ struct CalenderView: View {
                         }
                     }
                 }
-                VStack {
-                    HStack {
-                        Text("チャット")
-                        Spacer()
-                        Text("10,000pt")
-                    }
-                    Spacer()
-                    HStack {
-                        Text("ビデオ")
-                        Spacer()
-                        Text("10,000pt")
-                    }
-                    Spacer()
-                    HStack {
-                        Text("音声")
-                        Spacer()
-                        Text("10,000pt")
-                    }
-                }
-                .frame(width: 300, height: 200)
+                GetPointCard()
             }
         }
     }
@@ -152,6 +133,50 @@ struct CalenderView: View {
 
     func isSelected(_ day: String) -> Bool {
         day == selectedDay
+    }
+}
+
+struct GetPointCard: View {
+
+    var body: some View {
+        VStack {
+            HStack {
+                Image(systemName: "p.circle.fill")
+                Text("今月の獲得ポイントの内訳")
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            .padding(EdgeInsets(top: 20, leading: 0, bottom: 5, trailing: 0))
+            HStack {
+                Text("チャット")
+                    .fontWeight(.semibold)
+                Spacer()
+                Text("10,000pt")
+                    .fontWeight(.medium)
+            }
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+            HStack {
+                Text("ビデオ")
+                    .fontWeight(.semibold)
+                Spacer()
+                Text("10,000pt")
+                    .fontWeight(.medium)
+            }
+            .padding(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
+            HStack {
+                Text("音声")
+                    .fontWeight(.semibold)
+                Spacer()
+                Text("10,000pt")
+                    .fontWeight(.medium)
+            }
+            .padding(EdgeInsets(top: 5, leading: 0, bottom: 20, trailing: 0))
+        }
+        .foregroundColor(.white)
+        .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+        .background(.blue.opacity(0.7))
+        .cornerRadius(20)
+        .frame(width: 300, height: 250)
     }
 }
 
