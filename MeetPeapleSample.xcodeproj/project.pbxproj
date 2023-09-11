@@ -26,6 +26,8 @@
 		5D2642562AAC9A5300753953 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2642552AAC9A5300753953 /* CalenderViewModel.swift */; };
 		5D2642582AAC9A6D00753953 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2642572AAC9A6D00753953 /* CalenderView.swift */; };
 		5D26425B2AAF352000753953 /* WithdrwledView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26425A2AAF352000753953 /* WithdrwledView.swift */; };
+		5D26425E2AAF3A6000753953 /* InVoiceCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26425D2AAF3A6000753953 /* InVoiceCallView.swift */; };
+		5D2642602AAF5EC700753953 /* InVoiceCallViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D26425F2AAF5EC700753953 /* InVoiceCallViewModel.swift */; };
 		5DAEB6A62A09A7CA0089E96F /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6A52A09A7CA0089E96F /* SearchView.swift */; };
 		5DAEB6AA2A0A7FB20089E96F /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6A92A0A7FB20089E96F /* NotificationView.swift */; };
 		5DAEB6AE2A0A846A0089E96F /* PartnerImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAEB6AD2A0A846A0089E96F /* PartnerImageView.swift */; };
@@ -79,6 +81,8 @@
 		5D2642552AAC9A5300753953 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
 		5D2642572AAC9A6D00753953 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		5D26425A2AAF352000753953 /* WithdrwledView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrwledView.swift; sourceTree = "<group>"; };
+		5D26425D2AAF3A6000753953 /* InVoiceCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InVoiceCallView.swift; sourceTree = "<group>"; };
+		5D26425F2AAF5EC700753953 /* InVoiceCallViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InVoiceCallViewModel.swift; sourceTree = "<group>"; };
 		5DAEB6A52A09A7CA0089E96F /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5DAEB6A92A0A7FB20089E96F /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		5DAEB6AD2A0A846A0089E96F /* PartnerImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerImageView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 		5D1009702A09198C00C2C544 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5D26425C2AAF3A4900753953 /* InVoiceCall */,
 				5D2642592AAF350600753953 /* Withdrwled */,
 				5D2642542AAC9A3900753953 /* Calender */,
 				5DAEB6BA2A0D018F0089E96F /* CallHistory */,
@@ -332,6 +337,15 @@
 				5D26425A2AAF352000753953 /* WithdrwledView.swift */,
 			);
 			path = Withdrwled;
+			sourceTree = "<group>";
+		};
+		5D26425C2AAF3A4900753953 /* InVoiceCall */ = {
+			isa = PBXGroup;
+			children = (
+				5D26425D2AAF3A6000753953 /* InVoiceCallView.swift */,
+				5D26425F2AAF5EC700753953 /* InVoiceCallViewModel.swift */,
+			);
+			path = InVoiceCall;
 			sourceTree = "<group>";
 		};
 		5DAEB6A32A09A7AE0089E96F /* Search */ = {
@@ -672,6 +686,7 @@
 				5DAEB6CE2A0D021F0089E96F /* DailyBounaceView.swift in Sources */,
 				5DAEB6C82A0D02000089E96F /* SettingView.swift in Sources */,
 				5DAEB6CC2A0D02140089E96F /* FavoliteView.swift in Sources */,
+				5D26425E2AAF3A6000753953 /* InVoiceCallView.swift in Sources */,
 				5DAEB6CA2A0D020A0089E96F /* GoodView.swift in Sources */,
 				5DAEB6AA2A0A7FB20089E96F /* NotificationView.swift in Sources */,
 				5D1009772A091A2700C2C544 /* HomeView.swift in Sources */,
@@ -684,6 +699,7 @@
 				5D10097B2A091A5800C2C544 /* MyPageView.swift in Sources */,
 				5D1009472A0918A800C2C544 /* MeetPeapleSampleApp.swift in Sources */,
 				5D1009872A091ACC00C2C544 /* BoardView.swift in Sources */,
+				5D2642602AAF5EC700753953 /* InVoiceCallViewModel.swift in Sources */,
 				5D26425B2AAF352000753953 /* WithdrwledView.swift in Sources */,
 				5D1009752A0919D500C2C544 /* MainTabView.swift in Sources */,
 				5D1009842A091AB100C2C544 /* InstantCallView.swift in Sources */,
