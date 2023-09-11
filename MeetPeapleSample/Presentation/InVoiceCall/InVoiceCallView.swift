@@ -43,7 +43,7 @@ struct InVoiceCallView: View {
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 50, trailing: 0))
                     }
                     Button {
-
+                        let _ = print("tap")
                     } label: {
                         Image(systemName: "x.circle.fill")
                             .resizable()
