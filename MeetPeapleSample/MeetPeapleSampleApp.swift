@@ -12,7 +12,7 @@ struct MeetPeapleSampleApp: App {
     @State private var isScreenshotTaken = false
     var body: some Scene {
         WindowGroup {
-            MyPageView()
+            WithdrwledView()
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.userDidTakeScreenshotNotification)) { _ in
                     // スクリーンショットが撮られたときに実行される処理
                     print(#function, "aaa")
