@@ -67,7 +67,7 @@ struct ProfileBackgroundView: View {
 
 struct MyPageView: View {
     @State private var isProfileDetailVisible = false
-    @State private var isVoiceWaiteing = false
+    @State private var isVoiceWaiteing = UserDefaultsService.getIsLocalAuth()
     @State private var isVideoWaiteing = false
     private var columns: [GridItem] = Array(repeating: .init(.flexible(),
                                                              spacing: 0,
@@ -130,7 +130,10 @@ struct MyPageView: View {
                     .font(.system(size: 12))
             }
             HStack {
-                Toggle("音声通話", isOn: $isVoiceWaiteing)
+                Toggle("Face ID", isOn: $isVoiceWaiteing)
+                    .onChange(of: isVoiceWaiteing) { newValue in
+                        aaa(aaa: newValue)
+                    }
                     .padding()
                 Toggle("ビデオ通話", isOn: $isVideoWaiteing)
                     .padding()
@@ -152,6 +155,12 @@ struct MyPageView: View {
                 .transition(.move(edge: .top))
                 .backgroundClearSheet()
          })
+    }
+
+    private func aaa(aaa: Bool) {
+        Task {
+            try await LocalauthManager().confirmInitAuth(aaa)
+        }
     }
 }
 
