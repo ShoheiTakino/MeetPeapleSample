@@ -74,87 +74,87 @@ struct MyPageView: View {
                                                              alignment: .center),
                                             count: 3)
     var body: some View {
-        VStack {
-            HStack {
-                    Button {
-                        withAnimation {
-                            isProfileDetailVisible.toggle()
+        NavigationView {
+            VStack {
+                HStack {
+                        Button {
+                            withAnimation {
+                                isProfileDetailVisible.toggle()
+                            }
+                        } label: {
+                            ZStack {
+                            ProfileBackgroundView()
+                                .background(.pink.opacity(0.9))
+                                .frame(width: 108, height: 108)
+                                .cornerRadius(54)
+                            Image("user_image_1")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 100, height: 100)
+                                .clipShape(Circle())
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 50)
+                                        .stroke(Color.white, lineWidth: 3)
+                                )
+                            }
                         }
-                    } label: {
-                        ZStack {
-                        ProfileBackgroundView()
-                            .background(.pink.opacity(0.9))
-                            .frame(width: 108, height: 108)
-                            .cornerRadius(54)
-                        Image("user_image_1")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 50)
-                                    .stroke(Color.white, lineWidth: 3)
-                            )
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                    VStack {
+                        Text("タッキー")
+                            .foregroundColor(.black)
+                            .fontWeight(.bold)
+                        NavigationLink(destination: CalenderView()) {
+                            Text("プロフィール確認")
+                                .foregroundColor(.cyan)
+                                .fontWeight(.semibold)
                         }
                     }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
-                VStack {
-                    Text("タッキー")
-                        .foregroundColor(.black)
-                        .fontWeight(.bold)
+                    Spacer()
+                }
+                HStack {
+                    Text("10000")
                     Button {
-                        
+
                     } label: {
-                        Text("プロフィール確認")
-                            .foregroundColor(.cyan)
-                            .fontWeight(.semibold)
+                        Text("ポイント追加")
+                            .frame(width: 100, height: 50)
+                    }
+                }
+                HStack {
+                    Text("着信の許可設定")
+                        .fontWeight(.light)
+                        .font(.system(size: 15))
+                    Text("(offにすると着信拒否になります)")
+                        .fontWeight(.light)
+                        .font(.system(size: 12))
+                }
+                HStack {
+                    Toggle("Face ID", isOn: $isVoiceWaiteing)
+                        .onChange(of: isVoiceWaiteing) { newValue in
+                            aaa(aaa: newValue)
+                        }
+                        .padding()
+                    Toggle("ビデオ通話", isOn: $isVideoWaiteing)
+                        .padding()
+                }
+                LazyHGrid(rows: columns) {
+                    ForEach((1..<MyPageItems.allCases.count), id: \.self) { index in
+                        VStack {
+                            NavigationLink(destination: SettingView()) {
+                                Image(systemName: MyPageItems.allCases[index].systemName)
+                                    .frame(width: 100, height: 200)
+                            }
+                        }
                     }
                 }
                 Spacer()
             }
-            HStack {
-                Text("10000")
-                Button {
-                    
-                } label: {
-                    Text("ポイント追加")
-                        .frame(width: 100, height: 50)
-                }
-            }
-            HStack {
-                Text("着信の許可設定")
-                    .fontWeight(.light)
-                    .font(.system(size: 15))
-                Text("(offにすると着信拒否になります)")
-                    .fontWeight(.light)
-                    .font(.system(size: 12))
-            }
-            HStack {
-                Toggle("Face ID", isOn: $isVoiceWaiteing)
-                    .onChange(of: isVoiceWaiteing) { newValue in
-                        aaa(aaa: newValue)
-                    }
-                    .padding()
-                Toggle("ビデオ通話", isOn: $isVideoWaiteing)
-                    .padding()
-            }
-            LazyHGrid(rows: columns) {
-                ForEach((1..<MyPageItems.allCases.count), id: \.self) { index in
-                    VStack {
-                        NavigationLink(destination: SettingView()) {
-                            Image(systemName: MyPageItems.allCases[index].systemName)
-                                .frame(width: 100, height: 200)
-                        }
-                    }
-                }
-            }
-            Spacer()
+            .fullScreenCover(isPresented: $isProfileDetailVisible, content: {
+                ProfileIconImage(isVisible: $isProfileDetailVisible)
+                    .transition(.move(edge: .top))
+                    .backgroundClearSheet()
+             })
         }
-        .fullScreenCover(isPresented: $isProfileDetailVisible, content: {
-            ProfileIconImage(isVisible: $isProfileDetailVisible)
-                .transition(.move(edge: .top))
-                .backgroundClearSheet()
-         })
     }
 
     private func aaa(aaa: Bool) {
