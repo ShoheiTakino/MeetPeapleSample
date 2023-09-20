@@ -14,7 +14,7 @@ struct CalendarTestView: UIViewRepresentable {
          return Coordinator(self)
      }
     
-    @Binding var selectedDate: Date
+    @Binding var selectedDate: Int
     func makeUIView(context: Context) -> UIView {
 
         typealias UIViewType = FSCalendar
@@ -62,9 +62,36 @@ struct CalendarTestView: UIViewRepresentable {
          }
 
          func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-             parent.selectedDate = date
+             let formattedDateString = formatDateToString(date)
+             let dateString = date
+             let dateFormatter = DateFormatter()
+             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+             if let date = dateFormatter.date(from: formattedDateString) {
+                 let day = dayFromDate(date)
+                 print("日付の日部分：\(day)")
+                 parent.selectedDate = day
+             } else {
+                 print("日付の取得に失敗しました。")
+                 parent.selectedDate = 1 // エラー時は1日
+             }
              print(#function, date)
          }
+
+        func formatDateToString(_ date: Date) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+            dateFormatter.locale = Locale(identifier: "en_US_POSIX") // 必要に応じてロケールを設定
+            dateFormatter.timeZone = TimeZone(abbreviation: "UTC") // 必要に応じてタイムゾーンを設定
+
+            let formattedString = dateFormatter.string(from: date)
+            return formattedString
+        }
+
+        func dayFromDate(_ date: Date) -> Int {
+            let calendar = Calendar.current
+            let day = calendar.component(.day, from: date)
+            return day
+        }
      }
 }
 
