@@ -33,4 +33,8 @@ struct UserDefaultsService {
     static func getRecordingDataList() -> [Data] {
         UD.array(forKey: UserDefaultsKey.recordingDataListKey.rawValue) as? [Data] ?? []
     }
+
+    static func removeRecordingDataList() {
+        UD.removeObject(forKey: UserDefaultsKey.recordingDataListKey.rawValue)
+    }
 }
