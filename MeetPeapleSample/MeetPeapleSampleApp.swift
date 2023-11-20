@@ -12,7 +12,7 @@ struct MeetPeapleSampleApp: App {
     @State private var isScreenshotTaken = false
     var body: some Scene {
         WindowGroup {
-            PipContentView()
+            MainTabView()
         }
     }
 }
