@@ -20,10 +20,10 @@ struct MainTabView: View {
                     Image(systemName: "message")
                     Text("メッセージ")
                 }
-            InstantCallView()
+            RecordingListView()
                 .tabItem {
-                    Image(systemName: "video")
-                    Text("今すぐ通話")
+                    Image(systemName: "play")
+                    Text("録音する")
                 }
             BoardView()
                 .tabItem {
