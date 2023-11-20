@@ -23,6 +23,7 @@
 		5D10098B2A0931A400C2C544 /* OtherUserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */; };
 		5D1CD8B42B0B7E48001A7212 /* RecordingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CD8B32B0B7E48001A7212 /* RecordingListView.swift */; };
 		5D1CD8B62B0B7E51001A7212 /* RecordingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CD8B52B0B7E51001A7212 /* RecordingListViewModel.swift */; };
+		5D1CD8B92B0B8B22001A7212 /* AudioRecorderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CD8B82B0B8B22001A7212 /* AudioRecorderManager.swift */; };
 		5D2642182A997C8F00753953 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2642172A997C8F00753953 /* HomeViewModel.swift */; };
 		5D2642532AA5F4F000753953 /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 5D2642522AA5F4F000753953 /* Shimmer */; };
 		5D2642562AAC9A5300753953 /* CalenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2642552AAC9A5300753953 /* CalenderViewModel.swift */; };
@@ -97,6 +98,7 @@
 		5D10098A2A0931A400C2C544 /* OtherUserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUserProfileView.swift; sourceTree = "<group>"; };
 		5D1CD8B32B0B7E48001A7212 /* RecordingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingListView.swift; sourceTree = "<group>"; };
 		5D1CD8B52B0B7E51001A7212 /* RecordingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingListViewModel.swift; sourceTree = "<group>"; };
+		5D1CD8B82B0B8B22001A7212 /* AudioRecorderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecorderManager.swift; sourceTree = "<group>"; };
 		5D2642172A997C8F00753953 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5D2642552AAC9A5300753953 /* CalenderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderViewModel.swift; sourceTree = "<group>"; };
 		5D2642572AAC9A6D00753953 /* CalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		5D1009452A0918A800C2C544 /* MeetPeapleSample */ = {
 			isa = PBXGroup;
 			children = (
+				5D1CD8B72B0B8B0E001A7212 /* UseCase */,
 				5D1009702A09198C00C2C544 /* Presentation */,
 				5D1009462A0918A800C2C544 /* MeetPeapleSampleApp.swift */,
 				5D1009482A0918A800C2C544 /* ContentView.swift */,
@@ -370,6 +373,14 @@
 				5D1CD8B52B0B7E51001A7212 /* RecordingListViewModel.swift */,
 			);
 			path = RecordingList;
+			sourceTree = "<group>";
+		};
+		5D1CD8B72B0B8B0E001A7212 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				5D1CD8B82B0B8B22001A7212 /* AudioRecorderManager.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 		5D2642162A997C8100753953 /* ViewModel */ = {
@@ -883,6 +894,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1CD8B92B0B8B22001A7212 /* AudioRecorderManager.swift in Sources */,
 				5D1CD8B62B0B7E51001A7212 /* RecordingListViewModel.swift in Sources */,
 				5DAEB6A62A09A7CA0089E96F /* SearchView.swift in Sources */,
 				5D2642562AAC9A5300753953 /* CalenderViewModel.swift in Sources */,
@@ -1082,6 +1094,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "プライバシーを守るためにFace IDを使用します";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "マイク使うわ！";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1114,6 +1127,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "プライバシーを守るためにFace IDを使用します";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "マイク使うわ！";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
