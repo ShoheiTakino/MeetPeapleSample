@@ -9,6 +9,7 @@ import Foundation
 
 enum UserDefaultsKey: String {
     case isActivateLocalAuthKey = "isActivateLocalAuthKey"
+    case recordingDataListKey = "recordingDataListKey"
 }
 
 struct UserDefaultsService {
@@ -21,5 +22,15 @@ struct UserDefaultsService {
 
     static func getIsLocalAuth() -> Bool {
         UD.bool(forKey: UserDefaultsKey.isActivateLocalAuthKey.rawValue)
+    }
+
+    static func storeRecording(_ data: Data) {
+        var recordingDataList = getRecordingDataList()
+        recordingDataList.append(data)
+        UD.set(recordingDataList, forKey: UserDefaultsKey.recordingDataListKey.rawValue)
+    }
+
+    static func getRecordingDataList() -> [Data] {
+        UD.array(forKey: UserDefaultsKey.recordingDataListKey.rawValue) as? [Data] ?? []
     }
 }
