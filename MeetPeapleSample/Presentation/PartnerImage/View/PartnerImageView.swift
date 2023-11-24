@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PartnerImageView: View {
     private let imageName: String
-    
+    @Environment(\.presentationMode) var presentationMode
     init(imageName: String) {
         self.imageName = imageName
     }
@@ -19,6 +19,12 @@ struct PartnerImageView: View {
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: UIScreen.main.bounds.width)
+            .gesture(DragGesture().onEnded { value in
+                if value.translation.width > 100 {
+                    // 画面の左から右にスワイプで前の画面に戻る
+                    presentationMode.wrappedValue.dismiss()
+                }
+            })
     }
 }
 
