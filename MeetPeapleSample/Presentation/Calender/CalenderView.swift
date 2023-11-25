@@ -10,19 +10,21 @@ import SwiftUI
 struct CalenderView: View {
     @StateObject private var viewModel = CalenderViewModel()
     var body: some View {
-        VStack {
-            CalendarTestView(selectedDate: $viewModel.isSelectedDate)
-                .frame(height: 400)
-            GetPointCard(dailyRevenuData: $viewModel.revenueForCalender.dailyRevenuDataList[viewModel.isSelectedDate])
-            Spacer()
+        NavigationStack {
+            VStack {
+                CalendarTestView(selectedDate: $viewModel.isSelectedDate)
+                    .frame(height: 400)
+                GetPointCard(dailyRevenuData: $viewModel.revenueForCalender.dailyRevenuDataList[viewModel.isSelectedDate])
+                Spacer()
+            }
+            .navigationTitle(Text("報酬カレンダー"))
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: NavigationLink(destination: {
+                RevenueChartView()
+            }, label: {
+                Image(systemName: "chart.xyaxis.line")
+            }))
         }
-        .navigationTitle(Text("報酬カレンダー"))
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(trailing: NavigationLink(destination: {
-            RevenueChartView(revenueForCalender: $viewModel.revenueForCalender)
-        }, label: {
-            Image(systemName: "chart.line.uptrend.xyaxis")
-        }))
     }
 }
 

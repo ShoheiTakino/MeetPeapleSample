@@ -52,6 +52,7 @@ final class CalenderViewModel: ObservableObject {
 }
 
 struct DailyRevenuData {
+    var id = UUID()
     let day: Int
     let revenue: Int
     let payment: Int
