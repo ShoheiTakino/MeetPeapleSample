@@ -10,46 +10,34 @@ import Charts
 
 struct RevenueChartView: View {
 
-    struct MonthlyHoursOfSunshine: Identifiable {
-        var id: ObjectIdentifier
-        var date: Date
-        var hoursOfSunshine: Double
-
-        init(id: ObjectIdentifier, month: Int, hoursOfSunshine: Double) {
-            self.id = id
-            let calendar = Calendar.autoupdatingCurrent
-            self.date = calendar.date(from: DateComponents(year: 2020, month: month))!
-            self.hoursOfSunshine = hoursOfSunshine
-        }
-    }
-
-
-    var data: [MonthlyHoursOfSunshine] = [
-        MonthlyHoursOfSunshine(id: ObjectIdentifier(AnyObject.self), month: 1, hoursOfSunshine: 74),
-        MonthlyHoursOfSunshine(id: ObjectIdentifier(AnyObject.self),month: 2, hoursOfSunshine: 99),
-        // ...
-        MonthlyHoursOfSunshine(id: ObjectIdentifier(AnyObject.self),month: 12, hoursOfSunshine: 6)
-    ]
-
     @StateObject private var viewModel = RevenueChartViewModel()
-    @Binding var revenueForCalender: RevenueForCalender
+
     var body: some View {
         VStack {
-            Chart(data) {
-                LineMark(
-                    x: .value("Month", $0.date),
-                    y: .value("Hours of Sunshine", $0.hoursOfSunshine)
-                )
-            }.frame(width: .infinity, height: 400)
-            Spacer()
+            Chart {
+                ForEach(0..<viewModel.monthlyData.count, id: \.self) { index in
+                    BarMark(x: .value("通話", viewModel.monthlyData[index].voiceCall),
+                            y: .value("通話ではない。", viewModel.monthlyData[index].chat))
+                    .foregroundStyle(.cyan)
+                    .position(by: .value("カテゴリー", viewModel.monthlyData[index].chat))
+                }
+            }
+            .chartForegroundStyleScale ([
+                        "通話": .green, "Purple": .purple, "Pink": .pink, "Yellow": .yellow
+                    ])
+                    .padding()
+            .frame(height: 300)
+        }
+        .navigationBarTitle("Monthly Revenue Chart")
+        .onAppear {
+            viewModel.onApper()
         }
     }
 }
 
 struct RevenueChartView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockData = RevenueForCalender(monthlyRevenue: 5000, monthlyPayment: 1000, dailyRevenuDataList: [])
-        return RevenueChartView(revenueForCalender: .constant(mockData))
+        RevenueChartView()
     }
 }
 
