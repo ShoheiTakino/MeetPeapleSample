@@ -7,43 +7,91 @@
 
 import SwiftUI
 
-struct MainTabView: View {
+struct TestView: View {
+    @State private var count = 0
+
     var body: some View {
-        TabView{
-            RevenueChartView()
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("さがす")
+        ZStack {
+            Color.cyan.edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("Count: \(count)")
+                    .font(.system(size: 24, weight: .bold))
+                    .padding(16)
+
+                Spacer().frame(height: 16)
+
+                HStack(spacing: 8) {
+                    Button(action: {
+                        count += 1
+                    }) {
+                        Label("Increment", systemImage: "plus")
+                            .frame(height: 48)
+                            .padding(.horizontal, 12)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
+
+                    Button(action: {
+                        count -= 1
+                    }) {
+                        Label("Decrement", systemImage: "minus")
+                            .frame(height: 48)
+                            .padding(.horizontal, 12)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(8)
+                    }
                 }
-            MessageTabView()
-                .tabItem {
-                    Image(systemName: "message")
-                    Text("メッセージ")
-                }
-            RecordingListView()
-                .tabItem {
-                    Image(systemName: "play")
-                    Text("録音する")
-                }
-            BoardView()
-                .tabItem {
-                    Image(systemName: "list.bullet.rectangle")
-                    Text("掲示板")
-                }
-            MyPageView()
-                .tabItem {
-                    Image(systemName: "person.crop.circle")
-                    Text("マイページ")
-                }
+            }
+            .padding(16)
         }
-        .onAppear {
-            let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.configureWithDefaultBackground()
-            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-        }
-        .accentColor(.black)
     }
 }
+
+struct MainTabView: View {
+    var body: some View {
+        TestView()
+    }
+}
+
+//struct MainTabView: View {
+//    var body: some View {
+//        TabView{
+//            RevenueChartView()
+//                .tabItem {
+//                    Image(systemName: "magnifyingglass")
+//                    Text("さがす")
+//                }
+//            MessageTabView()
+//                .tabItem {
+//                    Image(systemName: "message")
+//                    Text("メッセージ")
+//                }
+//            RecordingListView()
+//                .tabItem {
+//                    Image(systemName: "play")
+//                    Text("録音する")
+//                }
+//            BoardView()
+//                .tabItem {
+//                    Image(systemName: "list.bullet.rectangle")
+//                    Text("掲示板")
+//                }
+//            MyPageView()
+//                .tabItem {
+//                    Image(systemName: "person.crop.circle")
+//                    Text("マイページ")
+//                }
+//        }
+//        .onAppear {
+//            let tabBarAppearance = UITabBarAppearance()
+//            tabBarAppearance.configureWithDefaultBackground()
+//            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+//        }
+//        .accentColor(.black)
+//    }
+//}
 
 struct Tab: View {
     @State var index = 0
