@@ -11,6 +11,7 @@ final class RecordingListViewModel: ObservableObject {
 
     @Published var recordingDataList: [Data] = UserDefaultsService.getRecordingDataList()
     @Published var isNowRecording = false
+    @Published var voiceText = ""
     private let audioRecorderManager = AudioRecorderManager()
 
     init() {
@@ -20,12 +21,14 @@ final class RecordingListViewModel: ObservableObject {
     func tappedStartRecordingButton() {
         if isNowRecording { return }
         isNowRecording = true
-        audioRecorderManager.startRecording()
+//        audioRecorderManager.startRecording()
+        audioRecorderManager.startSpeechRecognition()
     }
 
     func tappedStopRecordingButton() {
         isNowRecording = false
-        audioRecorderManager.stopRecording()
+//        audioRecorderManager.stopRecording()
+        audioRecorderManager.stopSpeechRecognition()
     }
 
     func tappedPlayRecording(_ voiceData: Data) {
