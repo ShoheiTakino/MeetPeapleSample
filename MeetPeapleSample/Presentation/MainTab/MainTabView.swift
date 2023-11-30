@@ -49,49 +49,49 @@ struct TestView: View {
     }
 }
 
-struct MainTabView: View {
-    var body: some View {
-        TestView()
-    }
-}
-
 //struct MainTabView: View {
 //    var body: some View {
-//        TabView{
-//            RevenueChartView()
-//                .tabItem {
-//                    Image(systemName: "magnifyingglass")
-//                    Text("さがす")
-//                }
-//            MessageTabView()
-//                .tabItem {
-//                    Image(systemName: "message")
-//                    Text("メッセージ")
-//                }
-//            RecordingListView()
-//                .tabItem {
-//                    Image(systemName: "play")
-//                    Text("録音する")
-//                }
-//            BoardView()
-//                .tabItem {
-//                    Image(systemName: "list.bullet.rectangle")
-//                    Text("掲示板")
-//                }
-//            MyPageView()
-//                .tabItem {
-//                    Image(systemName: "person.crop.circle")
-//                    Text("マイページ")
-//                }
-//        }
-//        .onAppear {
-//            let tabBarAppearance = UITabBarAppearance()
-//            tabBarAppearance.configureWithDefaultBackground()
-//            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
-//        }
-//        .accentColor(.black)
+//        TestView()
 //    }
 //}
+
+struct MainTabView: View {
+    var body: some View {
+        TabView{
+            RevenueChartView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("さがす")
+                }
+            MessageTabView()
+                .tabItem {
+                    Image(systemName: "message")
+                    Text("メッセージ")
+                }
+            RecordingListView()
+                .tabItem {
+                    Image(systemName: "play")
+                    Text("録音する")
+                }
+            BoardView()
+                .tabItem {
+                    Image(systemName: "list.bullet.rectangle")
+                    Text("掲示板")
+                }
+            MyPageView()
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
+                    Text("マイページ")
+                }
+        }
+        .onAppear {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.configureWithDefaultBackground()
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        }
+        .accentColor(.black)
+    }
+}
 
 struct Tab: View {
     @State var index = 0
