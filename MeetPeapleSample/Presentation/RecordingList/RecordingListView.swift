@@ -16,8 +16,8 @@ struct RecordingListView: View {
             ZStack {
                 List {
                     ForEach(0..<viewModel.recordingDataList.count, id: \.self) { index in
-                        RecordingListItem(recordingData: $viewModel.recordingDataList[index]) { data in
-                            viewModel.tappedPlayRecording(data)
+                        RecordingStringListItem(recordingString: $viewModel.recordingDataList[index]) { data in
+//                            viewModel.tappedPlayRecording(data)
                         }
                     }
                 }
@@ -58,6 +58,9 @@ struct RecordingListView: View {
                 }
             }
         }
+        .onAppear() {
+            viewModel.onAppear()
+        }
     }
 }
 
@@ -72,6 +75,23 @@ struct RecordingListItem: View {
                 action(recordingData)
             } label: {
                 Text("再生する")
+            }
+        }
+    }
+}
+
+
+struct RecordingStringListItem: View {
+
+    @Binding var recordingString: String
+    let action: (String) -> Void
+
+    var body: some View {
+        HStack {
+            Button {
+                action(recordingString)
+            } label: {
+                Text(recordingString)
             }
         }
     }

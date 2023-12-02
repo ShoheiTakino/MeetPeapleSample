@@ -9,7 +9,7 @@ import Foundation
 
 final class RecordingListViewModel: ObservableObject {
 
-    @Published var recordingDataList: [Data] = UserDefaultsService.getRecordingDataList()
+    @Published var recordingDataList: [String] = UserDefaultsService.getRecordingStringList()
     @Published var isNowRecording = false
     @Published var voiceText = ""
     private let audioRecorderManager = AudioRecorderManager()
@@ -18,11 +18,20 @@ final class RecordingListViewModel: ObservableObject {
         audioRecorderManager.confrimUseMic()
     }
 
+    func onAppear() {
+        recordingDataList = UserDefaultsService.getRecordingStringList()
+    }
+
     func tappedStartRecordingButton() {
         if isNowRecording { return }
         isNowRecording = true
 //        audioRecorderManager.startRecording()
-        audioRecorderManager.startSpeechRecognition()
+//        audioRecorderManager.startSpeechRecognition()
+        do {
+            try audioRecorderManager.startRecognition()
+        } catch {
+            print("無理やった")
+        }
     }
 
     func tappedStopRecordingButton() {
@@ -36,7 +45,7 @@ final class RecordingListViewModel: ObservableObject {
     }
 
     func tappedRemoveRecordingDataListButton() {
-        UserDefaultsService.removeRecordingDataList()
+        UserDefaultsService.removeRecordingStringList()
         recordingDataList = []
     }
 }
