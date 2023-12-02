@@ -14,7 +14,14 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
     private var speechRecognizer: SFSpeechRecognizer?
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
-    var isRecording = false
+    //音声認識で使用
+    //認識言語は日本語設定
+    private let recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "ja_JP"))!
+    //入力に使うAVAudioEngine
+    private var audioEngine: AVAudioEngine!
+    //バッファの音声を音声認識に使うリクエスト
+    private var recognitionReq: SFSpeechAudioBufferRecognitionRequest?
+    private var isRecording = false
 
     override init() {
         super.init()
@@ -67,49 +74,102 @@ final class AudioRecorderManager: NSObject, AVAudioRecorderDelegate {
         }
     }
 
+    func startRecognition() throws {
+        audioEngine = AVAudioEngine()
+        // もし前回の音声認識タスクが実行中ならキャンセル
+          if let recognitionTask = self.recognitionTask {
+              recognitionTask.cancel()
+              self.recognitionTask = nil
+          }
+          //一旦TextViewの内容をクリア
+
+          // 音声認識リクエストの作成
+          recognitionReq = SFSpeechAudioBufferRecognitionRequest()
+          guard let recognitionReq = recognitionReq else { return }
+          //途中の音声認識の結果も出力するように設定
+          recognitionReq.shouldReportPartialResults = true
+
+          // audioSessionのインスタンス取得(シングルトン)
+          let audioSession = AVAudioSession.sharedInstance()
+          //audiosessionの設定、.recordで入力に、.mesurementで測定モードへ、.mixWithOthersは他のアプリのaudiosessionと同時使用可能としている
+          try audioSession.setCategory(.record, mode: .measurement, options: .mixWithOthers)
+          //audiosessionをアクティブに、.notifyOthersOnDeactivationは他のアプリにAudioSessionを無効にしたことを伝える。
+          //セッションが終わると他のアプリはAudioSessionを開始できる
+          try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+
+          // マイク入力の設定
+          let recordingFormat = audioEngine.inputNode.outputFormat(forBus: 0)
+          audioEngine.inputNode.installTap(onBus: 0, bufferSize: 2048, format: recordingFormat) { (buffer, time) in
+              //音声認識のバッファーセット
+              recognitionReq.append(buffer)
+          }
+          //audioEngineを開始(入力)
+          try audioEngine.start()
+
+          //音声認識タスクを処理
+          recognitionTask = recognizer.recognitionTask(with: recognitionReq, resultHandler: { (result, error) in
+              //停止時はエラーで帰ってくる
+              if let error = error {
+                  print("\(error)")
+                  //システム音を鳴らすなどあればaudiosessionをもとに戻す
+                  do{
+                      try audioSession.setCategory(.soloAmbient, mode: .default, options: .mixWithOthers)
+                  }catch{
+                      print(error)
+                  }
+              } else {
+                  DispatchQueue.main.async {
+                      UserDefaultsService.storeRecordingString(result?.bestTranscription.formattedString ?? "できへん")
+                  }
+              }
+          })
+    }
+
+    //音声認識の停止
+    func stopLiveTranscription() {
+        //audioEngineの停止
+        audioEngine.stop()
+        //音声認識要求も停止
+        recognitionReq?.endAudio()
+        recognitionTask?.cancel()
+        //audioEngine
+        audioEngine.inputNode.removeTap(onBus: 0)
+        audioEngine.inputNode.reset()
+        recognitionTask = nil
+        recognitionReq = nil
+
+    }
+
     func startSpeechRecognition() {
         guard let recognizer = speechRecognizer,
-              recognizer.isAvailable else {
-            print("できてる？1 Speech recognition is not available")
-            return
-        }
+              recognizer.isAvailable else { return }
 
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
 
         do {
-            print("できてる？2")
             try AVAudioSession.sharedInstance().setCategory(.record, mode: .measurement, options: .duckOthers)
             try AVAudioSession.sharedInstance().setActive(true)
-            print("できてる？3")
             recognitionTask = recognizer.recognitionTask(with: recognitionRequest!) { [weak self] result, error in
                 guard let self = self else { return }
-                print("できてる？4")
                 var isFinal = false
-
                 if let result = result {
-                    print("できてる？5")
                     // 音声認識の結果を取得
                     let transcription = result.bestTranscription.formattedString
                     print("Transcription: \(transcription)")
                     // ここで取得した文字列を利用するか、保存するなどの処理を行います。
-
+                    UserDefaultsService.storeRecordingString(transcription)
                     isFinal = result.isFinal
                 }
-                print("できてる？6")
                 if error != nil || isFinal {
-                    print("できてる？6")
                     self.stopSpeechRecognition()
                 }
             }
-            print("できてる？7")
             let recordingFormat = audioRecorder?.format
             audioRecorder?.record()
             audioRecorder?.delegate = self
             audioRecorder?.record(forDuration: 10)
-            print("できてる？8")
             recognitionRequest?.shouldReportPartialResults = true
         } catch {
-            print("できてる？9")
             print("Error starting speech recognition: \(error.localizedDescription)")
         }
     }
