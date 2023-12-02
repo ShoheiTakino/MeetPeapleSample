@@ -10,6 +10,7 @@ import Foundation
 enum UserDefaultsKey: String {
     case isActivateLocalAuthKey = "isActivateLocalAuthKey"
     case recordingDataListKey = "recordingDataListKey"
+    case recordingStringListKey = "recordingStringListKey"
 }
 
 struct UserDefaultsService {
@@ -36,5 +37,19 @@ struct UserDefaultsService {
 
     static func removeRecordingDataList() {
         UD.removeObject(forKey: UserDefaultsKey.recordingDataListKey.rawValue)
+    }
+
+    static func storeRecordingString(_ data: String) {
+        var recordingDataList = getRecordingStringList()
+        recordingDataList.append(data)
+        UD.set(recordingDataList, forKey: UserDefaultsKey.recordingStringListKey.rawValue)
+    }
+
+    static func getRecordingStringList() -> [String] {
+        UD.array(forKey: UserDefaultsKey.recordingStringListKey.rawValue) as? [String] ?? []
+    }
+
+    static func removeRecordingStringList() {
+        UD.removeObject(forKey: UserDefaultsKey.recordingStringListKey.rawValue)
     }
 }
