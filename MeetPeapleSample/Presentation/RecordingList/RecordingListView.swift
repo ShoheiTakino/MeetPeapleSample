@@ -17,7 +17,7 @@ struct RecordingListView: View {
                 List {
                     ForEach(0..<viewModel.recordingDataList.count, id: \.self) { index in
                         RecordingStringListItem(recordingString: $viewModel.recordingDataList[index]) { data in
-//                            viewModel.tappedPlayRecording(data)
+                            viewModel.tappedPlayRecording(data)
                         }
                     }
                 }
@@ -83,15 +83,18 @@ struct RecordingListItem: View {
 
 struct RecordingStringListItem: View {
 
-    @Binding var recordingString: String
-    let action: (String) -> Void
+    @Binding var recordingString: [Data: String]
+    let action: (Data) -> Void
 
     var body: some View {
         HStack {
             Button {
-                action(recordingString)
+                if let firstKey = recordingString.keys.first {
+                     // 最初のキーを取得し、そのキーに対応する値を取得してアクションを実行
+                    action(recordingString.keys.first ?? Data())
+                 }
             } label: {
-                Text(recordingString)
+                Text(recordingString.values.first ?? "")
             }
         }
     }

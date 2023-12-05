@@ -11,6 +11,7 @@ enum UserDefaultsKey: String {
     case isActivateLocalAuthKey = "isActivateLocalAuthKey"
     case recordingDataListKey = "recordingDataListKey"
     case recordingStringListKey = "recordingStringListKey"
+    case recordingTappleListKey = "recordingTappleListKey"
 }
 
 struct UserDefaultsService {
@@ -51,5 +52,20 @@ struct UserDefaultsService {
 
     static func removeRecordingStringList() {
         UD.removeObject(forKey: UserDefaultsKey.recordingStringListKey.rawValue)
+    }
+
+    static func storeRecordingStringAndDataList(_ data: Data, text: String) {
+        var recordingDataList = getRecordingStringAndDataList()
+        let tapple = [data:text]
+        recordingDataList.append(tapple)
+        UD.set(recordingDataList, forKey: UserDefaultsKey.recordingTappleListKey.rawValue)
+    }
+
+    static func getRecordingStringAndDataList() -> [[Data: String]] {
+        UD.array(forKey: UserDefaultsKey.recordingTappleListKey.rawValue) as? [[Data: String]] ?? [[:]]
+    }
+
+    static func removeRecordingStringAndDataList() {
+        UD.removeObject(forKey: UserDefaultsKey.recordingTappleListKey.rawValue)
     }
 }

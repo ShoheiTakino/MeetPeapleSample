@@ -9,7 +9,7 @@ import Foundation
 
 final class RecordingListViewModel: ObservableObject {
 
-    @Published var recordingDataList: [String] = UserDefaultsService.getRecordingStringList()
+    @Published var recordingDataList: [[Data:String]] = UserDefaultsService.getRecordingStringAndDataList()
     @Published var isNowRecording = false
     @Published var voiceText = ""
     private let audioRecorderManager = AudioRecorderManager()
@@ -19,7 +19,7 @@ final class RecordingListViewModel: ObservableObject {
     }
 
     func onAppear() {
-        recordingDataList = UserDefaultsService.getRecordingStringList()
+        recordingDataList = UserDefaultsService.getRecordingStringAndDataList()
     }
 
     func tappedStartRecordingButton() {
